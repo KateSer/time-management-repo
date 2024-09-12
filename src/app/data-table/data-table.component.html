@@ -1,0 +1,102 @@
+<div class="table-container">
+  <h2 class = "center-title">Tasks List
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+  </h2>
+  <p class = "top-message">Get clear on the difference between what is important and urgent for you to do, and what isn’t.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th class="name-column">Task</th>
+        <th class="important-column">Important</th>
+        <th class="urgent-column">Urgent</th>
+        <th class="date-column">Due Date</th>
+        <th class="actions-column">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <!-- Name -->
+        <td class="name-column">
+          <span *ngIf="!item.isEditing">{{ item.name }}</span>
+          <input *ngIf="item.isEditing" type="text" [(ngModel)]="item.name" />
+        </td>
+
+        <!-- Important -->
+        <td class="important-column">
+          <span *ngIf="!item.isEditing">
+            {{ item.important === null ? 'Unset' : item.important ? 'Yes' : 'No' }}
+          </span>
+          <select *ngIf="item.isEditing" [(ngModel)]="item.important">
+            <option [ngValue]="null">Unset</option>
+            <option [ngValue]="true">Yes</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </td>
+
+        <!-- Urgent -->
+        <td class="urgent-column">
+          <span *ngIf="!item.isEditing">
+            {{ item.urgent === null ? 'Unset' : item.urgent ? 'Yes' : 'No' }}
+          </span>
+          <select *ngIf="item.isEditing" [(ngModel)]="item.urgent">
+            <option [ngValue]="null">Unset</option>
+            <option [ngValue]="true">Yes</option>
+            <option [ngValue]="false">No</option>
+          </select>
+        </td>
+
+        <!-- Due Date -->
+        <td class="date-column">
+          <span *ngIf="!item.isEditing">{{ item.dueDate | date: 'mediumDate' }}</span>
+          <input *ngIf="item.isEditing" type="date" [(ngModel)]="item.dueDate" />
+        </td>
+
+        <!-- Actions -->
+        <td class="actions-column">
+          <button *ngIf="!item.isEditing" (click)="editItem(item)" class="edit-button" aria-label="Edit Item">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button *ngIf="item.isEditing" (click)="saveItem(item)" class="save-button" aria-label="Save Item">
+            <i class="fa fa-save"></i>
+          </button>
+          <button *ngIf="item.isEditing" (click)="cancelEdit(item)" class="cancel-button" aria-label="Cancel">
+            <i class="fa fa-times"></i>
+          </button>
+          <button *ngIf="!item.isEditing" (click)="deleteItem(i)" class="delete-button" aria-label="Delete Item">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="add-item-form">
+    <!-- Input and Button Wrapper -->
+ <div class="add-item-wrapper">
+  <input aria-label="Add New Item" id="item-name" [(ngModel)]="newItem.name" placeholder="Add new item" class="add-item-input" required />
+  <button (click)="addItem()" class="add-item-button">Add</button>
+
+</div>
+ <!-- Error Message -->
+ <div *ngIf="showError" class="error-message">
+  Oops! You forgot to add the task.
+</div>
+   <!-- Clear Button -->
+  <button (click)="clearItems()" class="clear-button">clear all tasks in the table</button>
+  <!-- Confirmation Modal for Clearing All Tasks -->
+  <app-confirmation-modal
+    *ngIf="showClearConfirmation"
+    [message]="'Are you sure you want to clear all tasks?'"
+    (confirm)="confirmClearItems()"
+    (cancel)="cancelClearItems()"
+  ></app-confirmation-modal>
+
+     <!-- Confirmation Modal for Deleting a Task -->
+     <app-confirmation-modal
+     *ngIf="showDeleteConfirmation"
+     [message]="confirmationMessage"
+     (confirm)="confirmDeleteItem()"
+     (cancel)="cancelDeleteItem()"
+   ></app-confirmation-modal>
+</div>

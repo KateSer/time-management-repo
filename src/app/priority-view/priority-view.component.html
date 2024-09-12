@@ -1,0 +1,38 @@
+<div class="priority-view-container"  cdkDropList
+(cdkDropListDropped)="drop($event)">
+  <h2 class="priority-header-title">Priority {{ priority }} Tasks</h2>
+  <button *ngIf="filteredItems.length > 0" (click)="refreshTasks()" class="refresh-button">
+    <i class="fa fa-refresh"></i> Refresh Order
+  </button>
+
+    <!-- Display the random message -->
+    <p *ngIf="filteredItems.length > 0" class="priority-message">{{ randomMessage }}</p>
+
+  <ul *ngIf="filteredItems.length > 0"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
+    class="task-list"
+    >
+    <li *ngFor="let item of filteredItems" cdkDrag
+    class="task-item">
+      <strong>{{ item.name }}</strong>
+      <p>Due Date: {{ item.dueDate ? (item.dueDate | date: 'mediumDate') : 'No Date' }}</p>
+      <button (click)="confirmDeleteItem(item)" class="delete-button">
+        <i class="fa fa-trash"></i> Delete
+      </button>
+    </li>
+  </ul>
+
+  <div *ngIf="filteredItems.length === 0" class="no-tasks-found">
+    <p>Looks like no tasks found.</p>
+    <img src="assets/images/three.gif" alt="No Tasks Found">
+  </div>
+
+     <!-- Reuse Confirmation Modal -->
+  <app-confirmation-modal
+  *ngIf="showDeleteConfirmation"
+  [message]="confirmationMessage"
+  (confirm)="deleteConfirmed()"
+  (cancel)="cancelDelete()"
+></app-confirmation-modal>
+</div>

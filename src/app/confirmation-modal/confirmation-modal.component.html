@@ -1,0 +1,17 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <button class="dismiss-button" (click)="onCancel()">
+      <i class="fa fa-times"></i>
+    </button>
+    <h2>Confirmation</h2>
+    <p>{{ message }}</p>
+    <div class="modal-buttons">
+      <button class="confirm-button" (click)="onConfirm()">
+        <i class="fa fa-check"></i> Yes
+      </button>
+      <button class="cancel-button" (click)="onCancel()">
+        <i class="fa fa-times"></i> No
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { ConsentAlertComponent } from './consent-alert/consent-alert.component';
+import { OnboardingModalComponent } from './onboarding-modal/onboarding-modal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterModule,
+    OnboardingModalComponent,
+    CommonModule,
+    ConsentAlertComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'time-management-app';
+  title = 'Time Management App';
+  showModal = false;
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
 }

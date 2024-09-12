@@ -1,0 +1,52 @@
+.consent-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f3f1e8e3;
+  padding: 15x;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ff7f50;
+  z-index: 1100;
+}
+
+.consent-banner p {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.accept-button,
+.dismiss-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.accept-button {
+  background-color: #057a37;
+  margin-right: 10px;
+}
+
+.accept-button:hover {
+  background-color: #06664e;
+  transform: scale(1.05);
+}
+
+.dismiss-button {
+  background-color: #831f29;
+}
+
+.dismiss-button:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.consent-banner-content {
+  padding: 15px;
+}

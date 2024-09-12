@@ -1,0 +1,11 @@
+<div *ngIf="showBanner" class="consent-banner">
+  <div class="consent-banner-content">
+  <p>
+    We are using local storage to persist your data. Your tasks will be stored until you change these settings.
+  </p>
+  <button class="accept-button" (click)="acceptConsent()">Accept</button>
+  <button class="dismiss-button" (click)="dismissBanner()">
+    <i class="fa fa-times"></i></button>
+</div>
+</div>
+

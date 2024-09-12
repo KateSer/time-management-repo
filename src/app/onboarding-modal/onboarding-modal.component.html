@@ -1,0 +1,54 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <button class="dismiss-button" (click)="dismiss.emit()">
+      <i class="fa fa-times"></i>
+    </button>
+    <h2>Welcome to Time Management App</h2>
+    <div class="modal-body">
+      <p>This app is designed to help you organize your ideas and tasks effectively. Follow these steps to get started:</p>
+
+      <ol>
+        <li>
+          <strong>Enter Your Ideas:</strong>
+          <p>Use the "Add" button to enter all your ideas or tasks that you want to prioritize. Each task should have a name which is required.</p>
+        </li>
+        <li>
+          <strong>Assign Urgency and Importance:</strong>
+          <p>For each task, assign whether it is urgent or not. Assign whether it is important or not. These values help in making informed decisions about your tasks.</p>
+        </li>
+        <li>
+          <strong>Optional Due Date:</strong>
+          <p>You can also add a due date to each task to help you sort and manage your tasks better. This is optional, but it can be useful for tracking deadlines.</p>
+        </li>
+        <li>
+          <strong>Manage Your Tasks:</strong>
+          <p>You can:</p>
+          <ul>
+            <li><strong>Edit Tasks:</strong> You can edit any task if you need to make changes.</li>
+            <li><strong>Delete Tasks:</strong> If you change your mind about a task, you can delete it.</li>
+            <li><strong>Clear All Tasks:</strong> Use the "Clear All" button to remove all tasks and start fresh.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>View and Filter Your Tasks:</strong>
+          <p>Navigate the top menu buttons to filter your tasks based on their priority:</p>
+          <ul>
+            <li><strong>Do It Now:</strong> View tasks that are both important and urgent.</li>
+            <li><strong>Do Next:</strong> View tasks that are important but not urgent.</li>
+            <li><strong>Do Later:</strong> View tasks that are not important but urgent.</li>
+            <li><strong>Delete:</strong> View tasks that are neither important nor urgent.</li>
+          </ul>
+          <p>This helps you focus on what really matters and manage your time efficiently.</p>
+        </li>
+      </ol>
+
+      <h3>Let's Get Started!</h3>
+      <p>Follow these steps, prioritize your tasks, and stay organized. Enjoy managing your time effectively with our app!</p>
+
+      <p>To learn more about how to use this app, please visit our
+        <a href="https://lacy-knave-86b.notion.site/SEO-Video-26dd7914b463441d85043269e7bae3db" target="_blank">Notion page</a>.
+      </p>
+    </div>
+    <button class="confirm-button" (click)="dismiss.emit()">Got it!</button>
+  </div>
+</div>
